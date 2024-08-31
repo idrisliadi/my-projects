@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section id="service">
+        <% blog.forEach (blog=>{%>
+       <div class="card" style="width: 18rem; height: 90vh;">
+          <img src="<%= blog.blogimg%>" class="card-img-top" alt="..." style="height: 50%;">
+          <div class="card-body">
+            <h5 class="card-title"><%= blog.blogtitle%></h5>
+            <p class="card-text"><%= blog.blogdescription%></p></p>
+           <div id="Price"> 
+            <b>PRICE</b>
+            <p class="card-text"> #<%= blog.authorcontact%></p></div>
+            <button class="updatebtn" data-id="<%=blog._id %>">update_blog</button>
+
+
+          </div>
+        </div>
+       <%});%>  </section>  
+
+       <script src="js2/script.js"></script>
+       <script src="js2/third.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/mine.css">
+    <title>Document</title>
+</head>
+<body>
+    <section id="section" class="container" >
+        <% blog.forEach (blog=>{%>
+       <div class="card" style="width: 28rem;">
+       
+          <img src="<%= blog.blogimg%>" class="card-img-top " alt="...">
+          <div class="card-body">
+            <h2 class="card-title"><%= blog.blogtitle%></h2>
+            <p class="card-text container" style="color: #6c757d;"><%= blog.blogdescription%></p>
+     
+           <div id="price"> <b>PRICE</b>
+  <h1 class="card-text container" style="color: #fd7e14;font-size: xx-large;"> #<%= blog.authorcontact%></h1> 
+
+
+  <form action="/delete" method="post">
+    <input type="hidden" name="id" value="<%= blog._id %>">
+    <button data-id="<%= blog._id%>">Delete blog</button>
+  </form>
+   
+          </div>
+          </div>
+          
+        </div>
+       <%});%>  </section>  
+</body>
+</html>

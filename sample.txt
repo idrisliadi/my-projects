@@ -1,0 +1,52 @@
+ <!-- <%if(error){%>
+                    <h3>there is an error</h3>
+                 <%}%>
+
+
+
+    <% services.forEach (services=>{%>
+      <div class="card mb-4" style="width: 20vw;">
+          <img src="<%= services.blogimg%>" alt="blogimage content">
+   <div><%= services.blogtitle%></div>
+   <div><%= services.blogauthor%></div>
+   <div><%= services.blogcategory%></div>
+   <div><%= services.authorcontact%></div>
+   <p><%= services.blogdescription%></p>
+    </div>
+  </div>
+   <%});%>  
+
+  //update user page
+server.post("/updateuser", async (req,res)=>{
+    const oldemail = req.body.oldemail;
+    const newemail = req.body.newemail;
+    user.updateOne({ email:oldemail}, { email:newemail })
+    .then(result => {
+     console.log('Email updated:', result);
+})
+.catch(err => {
+  console.error('Error updating email:', err);
+});
+
+})
+
+
+
+
+     //checking image type
+        const imagetype = ['image/png','image/gif','image/jpeg','image/jpg'];
+        if(!imagetype.includes(req.file.mimetype)){
+            error.push("invalid")
+            console.log(error)
+        }
+        // image size 
+        const maxsize = 2*2024*2024
+        if(req.file.size>maxsize){
+           error.push("invalid image size")
+           console.log(error)
+        }
+        // const imagecheck
+        const imagecheck = cloudinary.search
+        .expression(`public_id : ${req.file.originalname}`)
+        .max_results(1)
+        .execute()

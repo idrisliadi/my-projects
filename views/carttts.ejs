@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='trayHead'>
+        <i class="fa fa-window-close fa-2x close" aria-hidden="true"></i>
+        <h3>PRODUCTS</h3>
+    </div>
+    <div class="head">
+         <div class="serial">
+             <h3>ITEMS</h3>
+             <h3>PRICE</h3>
+             <h3>SN</h3>
+         </div>
+         <script>
+            `<div id='trayHead'>
+                                       <i class="fa fa-window-close fa-2x close" aria-hidden="true"></i>
+                                       <h3>PRODUCTS</h3>
+                                   </div>
+                                   <div class="head">
+                                        <div class="serial">
+                                            <h3>ITEMS</h3>
+                                            <h3>PRICE</h3>
+                                            <h3>SN</h3>
+                                        </div>`            
+             for (let i = 0; i < cart_store.length; i++) {
+                cart_item.innerHTML += `<div id="imag">
+                                            <figure>
+                                                <img src='${productray[i]['blogimg']}' width='30%'>
+                                                <figcaption>${productray[i]['blogtitle']}</figcaption>
+                                            </figure>
+                                            <div id="price">
+                                                <h3>PRICE:${productray[i]['blogdescription']}</h3>
+                                            </div>
+                                            <div id="incred">
+                                                 <i class="fas fa-angle-up"></i>
+                                                 <i class="fas fa-angle-down"></i>
+                                            </div>
+                                       </div>
+                                       <button>clear</button>
+                                   </div>`
+                                   console.log(cart_store[i])
+                                }
+         </script>
+</body>
+</html>

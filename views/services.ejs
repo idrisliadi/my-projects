@@ -1,0 +1,483 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Services - IdrisConstruction </title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <link rel="stylesheet" href="css/mine.css">
+
+  <!-- Favicons -->
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="vendor/aos/aos.css" rel="stylesheet">
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: UpConstruction
+  * Template URL: https://bootstrapmade.com/upconstruction-bootstrap-construction-website-template/
+  * Updated: Jun 29 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+  <style>
+    .button{
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      width: 80%;
+      border-radius: 10px;
+    }
+    
+    #Price{
+      position: absolute;
+      bottom: 60px;
+      left: 10px;
+    }
+
+    /* cart */
+    #trayHead{
+      border-radius: 20px;
+      background-color:whitesmoke;
+      justify-content: center;
+    }
+    #tray{
+
+      top: 15%;
+      width: 40%;
+      position: absolute;
+      right: 0%;;
+      z-index: 1;
+      border-radius: 20px;
+      background-color: violet  ;
+      
+    }
+    .cancel-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #f1f1f1; /* Light gray */
+    color: #333; /* Dark gray */
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 50%; /* Makes it a circle */
+    cursor: pointer;
+}
+
+.cancel-icon:hover {
+    background-color: #e0e0e0; /* Slightly darker gray on hover */
+}
+
+    .cart { position: absolute;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .cart h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            display: flex;
+        }
+        .item img {
+            max-width: 100px;
+            margin-right: 20px;
+        }
+        .item-details {
+            flex-grow: 1;
+        }
+        .item h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        .item p {
+            margin: 5px 0;
+        }
+        .item .price {
+            font-weight: bold;
+        }
+        .item .quantity {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+      
+        .checkout {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .checkout button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .checkout button:hover {
+            background-color: #45a049;
+        }
+  </style>
+<body class="services-page">
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="img/logo.png" alt=""> -->
+        <h1 class="sitename">IdrisConstruction</h1> <span>.</span>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="/users">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/galery">Galery</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/projects">Projects</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <form action="/logout" method="post">
+            <!-- <input type="submit" value="logout"> -->
+             <button type="submit" style="border: 
+             none;" >logout</button>
+           </form>
+
+       <li>
+       
+            <div id="cart">
+           
+                <i class="bi bi-cart-check-fill"></i>
+             <button><span id="badge"></span></button>
+            </div>
+        
+            <button id="clearCartButton">Clear Cart</button>
+            </li>
+        
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+ 
+
+  <main class="main">
+ <div id="tray">
+    
+  </div>
+    <!-- Page Title -->
+    <div class="page-title dark-background" style="background-image: url(img/page-title-bg.jpg);">
+      <div class="container position-relative">
+        <h1>Services</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="/index">Home</a></li>
+            <li class="current">Services</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+    
+    <section id="service">
+    <% services.forEach (service=>{%>
+   <div class="card" style="width: 18rem; height: 90vh;">
+      <img src="<%= service.blogimg%>" class="card-img-top" alt="..." style="height: 50%;">
+      <div class="card-body">
+        <h5 class="card-title"><%= service.blogtitle%></h5>
+        <p class="card-text"><%= service.blogdescription%></p></p>
+       <div id="Price"> 
+        <b>PRICE</b>
+        <p class="card-text"> #<%= service.authorcontact%></p></div>
+      
+
+    
+
+       <button class="add-to-cart button" id="<%= service.id %>">ADD TO CART</button>
+      </div>
+    </div>
+   <%});%>  </section>  
+
+
+<!-- 
+   <ul>
+    <% services.forEach(function(service) { %>
+      <li>
+        <h3><%= service.blogtitle %></h3>
+        <p>Price: <%= service.blogcategory %></p>
+      
+      </li>
+    <% }); %>
+  </ul> -->
+  
+  </main>
+  <script>
+       // function to display cart product
+      //  let display = document.getElementById('services._id')
+      //  console.log(display);
+      //  function addcart(pdtid){
+      //   console.log(pdtid); 
+      // }<script>
+  
+  // window.onload = function(){
+  //   let productray = JSON.parse(localStorage.getItem("cartitem"))
+  //   let itemNos = document.getElementById("badge")
+  //   if(productray == null || productray == undefined){
+  //     itemNos.innerText = 0
+  //     console.log("no item in the cart")
+  //   }else{
+  //     pdtcounts =  productray.length
+  //     // get item from localstorage
+  //     itemNos.innerText = pdtcounts
+  //   }
+    
+  // }
+
+
+  // document.addEventListener('DOMContentLoaded', function() {
+  //   // Get all the "Add to Cart" buttons
+  //   const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+  //   // Loop through each button and add a click event listener
+  //   addToCartButtons.forEach(button => {
+  //     button.addEventListener('click', function(e) {
+  //       e.preventDefault();  // Prevent the default action (like submitting a form)
+
+  //       // Get the product ID from the button's data-id attribute
+  //       const productId = this.getAttribute('id');
+  //       $.ajax({
+  //         type:"GET",
+  //         url:"/cart",
+  //        // data: JSON.stringify({productId:productId}),
+  //         success:function(data){
+  //           let carts = []
+  //           let cartitems = JSON.parse(data)
+  //           let productray = JSON.parse(localStorage.getItem("cartitem"))
+  //           cartitems.forEach(cartitem =>{
+  //             if(productId == cartitem._id){
+  //               if(productray == null || productray == undefined){
+  //                 carts.push(cartitem)
+  //                 localStorage.setItem("cartitem", JSON.stringify(carts))
+  //                 location.reload()
+  //               }else{
+  //                 console.log(productray);
+  //                 productray.push(cartitem)
+                  
+  //                 localStorage.setItem("cartitem", JSON.stringify(productray))
+               
+  //                 location.reload()
+  //                 alert("item added")
+                  
+  //                 // alert("product exists")
+  //               }
+           
+                
+  //             }
+              
+  //           })
+  //         }
+  //       })
+
+  //       // Log the product ID to the console (you should see this in your browser's console)
+  //       console.log('Product ID:', productId);
+  //     });
+  //   });
+  // });
+
+ 
+//   const carticons = document.getElementById("carticon")
+//   carticons.addEventListener("click", (e)=>{
+//     e.preventDefault()
+//     $.ajax({
+//         method : "GET",
+//         url: "/cart",
+//         success : function(data)
+//         {
+//             console.log($("#forms").html(data))
+//         }
+// })
+//   })
+
+//tryout
+
+ 
+window.onload = function(){
+    let productray = JSON.parse(localStorage.getItem("cartitem"))
+    let itemNos = document.getElementById("badge")
+    if(productray == null || productray == undefined){
+      itemNos.innerText = 0
+      console.log("no item in the cart")
+    }else{
+      pdtcounts =  productray.length
+      // get item from localstorage
+      itemNos.innerText = pdtcounts
+    }
+    let display = document.getElementById('cart')
+        let cart_tray = document.getElementById('tray')
+        display.addEventListener('click', function () {
+            cart_tray.style.display = 'block'
+            let cart_item = document.createElement('div');
+            cart_item.setAttribute('class', 'content')
+            cart_item.innerHTML = `<div id='trayHead'>
+                                 <span class="cancel-icon" ">&#10060;</span>
+                                       <h2>Your Shopping Cart</h2>
+                                         
+                                        <div class="checkout">
+            
+                                   </div>
+                                   <div class="head">
+                                  
+                                        `
+                                        for (let i = 0; i < productray.length; i++) {
+                cart_item.innerHTML += `  <div class="item">
+            <img src=" ${productray[i]['blogimg']} " alt="Solar Panel" >
+            <div class="item-details">
+                <h3>  ${productray[i]['blogtitle']}</h3>
+                <p>Description:   ${productray[i]['blogdescription']}</p>
+                <p class="price"> Price: ${productray[i]['authorcontact']}</p>
+             
+            
+
+            </div>
+                                     
+        </div>
+        
+                                   </div>`
+                console.log(productray[i])
+            }
+            cart_item.innerHTML += `<a href="/payment"><button type="button">Place order</button></a>
+                <button id="clearCartButton">Clear Cart</button>`
+            
+            cart_tray.appendChild(cart_item)
+            clearCartButton.addEventListener('click', () => {
+    // Remove the cartItem from local storage
+    localStorage.removeItem('cartitem');
+   
+    location.reload()
+});
+      
+            const cancelIcon = cart_item.querySelector('.cancel-icon');
+            cancelIcon.addEventListener('click', () => {
+                // Remove the parent div when the cancel icon is clicked
+                cart_tray.removeChild(cart_item);
+            });
+            
+
+        })
+        const clearCartButton = document.getElementById('clearCartButton');
+
+// Add event listener to the button
+
+ 
+    
+  }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all the "Add to Cart" buttons
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+    // Loop through each button and add a click event listener
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();  // Prevent the default action (like submitting a form)
+
+        // Get the product ID from the button's data-id attribute
+        const productId = this.getAttribute('id');
+        $.ajax({
+          type:"GET",
+          url:"/cart",
+         // data: JSON.stringify({productId:productId}),
+          success:function(data){
+            let carts = []
+            let cartitems = JSON.parse(data)
+            let productray = JSON.parse(localStorage.getItem("cartitem"))
+            cartitems.forEach(cartitem =>{
+              if(productId == cartitem._id){
+                if(productray == null || productray == undefined){
+                  carts.push(cartitem)
+                  localStorage.setItem("cartitem", JSON.stringify(carts))
+                  location.reload()
+                }else{
+                  console.log(cartitem);
+                  productray.push(cartitem)
+                  
+                  localStorage.setItem("cartitem", JSON.stringify(productray))
+               
+                  location.reload()
+                  
+                 
+                  
+                  // alert("product exists")
+                }
+           
+                
+              }
+              
+            })
+          }
+        })
+
+        // Log the product ID to the console (you should see this in your browser's console)
+        console.log('Product ID:', productId);
+      });
+    });
+
+  });
+
+
+  
+</script>
+
+  </script>
+  <%- include("partials/footer.ejs")%> 
+
+  
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/php-email-form/validate.js"></script>
+  <script src="vendor/aos/aos.js"></script>
+  <script src="vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="vendor/purecounter/purecounter_vanilla.js"></script>
+
+  <!-- Main JS File -->
+   <script src="js2/third.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>

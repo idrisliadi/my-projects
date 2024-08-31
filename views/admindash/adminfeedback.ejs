@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #e0f7fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+/*   
+    align-items: center;
+    height: 100vh; */
+}
+
+.feedback-container {
+    width: 650px;
+    background-color: #ffffff;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+h1 {
+    text-align: center;
+    color: #00695c;
+    font-weight: 700;
+    margin-bottom: 30px;
+    font-size: 26px;
+}
+
+.feedback-item {
+    background-color: #b2dfdb;
+    border: 1px solid #80cbc4;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+.feedback-item:hover {
+    transform: scale(1.02);
+}
+.feedback-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.name {
+    font-weight: bold;
+    color: #004d40;
+    font-size: 18px;
+}
+
+.email {
+    font-style: italic;
+    color: #00796b;
+    font-size: 16px;
+}
+
+.message {
+    color: #004d40;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+
+
+    </style>
+    <section class="feedback-container">
+
+        <h1>Users Feedback</h1>
+   
+    
+
+    <% feedback.forEach (feedback =>{%>
+        
+        <div class="feedback-item">
+            <div class="feedback-header">
+                <span class="name"><%= feedback.name%></span>
+                <span class="email"><%= feedback.email%></span>
+            </div>
+            <p class="message"><%= feedback.message%></p>
+        </div>  
+     
+   
+    
+     <%});%>    
+    </section>
+     
+
+ 
+     
+</section>
+</body>
+</html>

@@ -1,0 +1,75 @@
+button{
+    border-radius: 30px;
+    background-color: yellowgreen;
+    text-transform: capitalize;
+
+    color: white
+}
+
+
+/* #content-wrapper{
+    background-color:;
+} */
+  #idrisconstruct{
+    color: blueviolet;
+    font-size: 20px;
+  }  
+
+#section{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    text-align: center;
+
+}
+.name{
+    font-weight: bold;
+    color: #007bff;
+}
+#deletebutton{
+    position: absolute;
+    bottom: 10px;
+}
+
+#trans{
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+    #trans:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+
+#searchForm{
+    display: flex;
+    gap: 30px;
+    
+} 
+#service{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+#but{
+    background-color: #2F4F4F; /* Slate Gray background */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for size */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+#but:hover {
+    background-color: #1e3a3a; /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+#but:active {
+    background-color: #1a2a2a; /* Even darker shade when clicked */
+    transform: scale(1); /* Reset scale when clicked */
+}
+
+/* #searchInput{
+    width: 100%;
+} */
