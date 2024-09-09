@@ -7,6 +7,7 @@ const dotenv = require("dotenv")
 const ejs = require("ejs")
 const session = require ("express-session")
 const mongodb = require("mongodb")
+const axios = require('axios');
 server.use(
     session({
         secret: "keyboard cat",// prevent unauthhorized access too user session
@@ -14,6 +15,7 @@ server.use(
         saveUninitialized: true, // controls whether to save a section that is new
     })
 );
+// const paystack = require("paystack-api")("secret_key");
 const jwt = require("jsonwebtoken")
 const mongoose = require("mongoose")
 const multer = require  ("multer")
@@ -197,6 +199,22 @@ server.get("/admingalery",async(req,res)=>{
     })
     res.render("admindash/admingalery", {galery:galery})
 })
+// all users
+server.get("/alluser",async(req,res)=>{
+    const alluser = await user.find();
+    const allusers= []
+    alluser.forEach((doc)=>{
+        allusers.push(doc)
+    })
+    res.render("admindash/alluser", {alluser:alluser})
+})
+// delete users
+server.post("/alluser",async (req,res)=>{
+    let id = req.body.id.trim();
+    id = new mongodb.ObjectId(id);
+    await user.deleteOne({_id :id});
+    res.redirect("admin")
+})
 
 //admin feedbacks
 server.get("/adminfeedback",async(req,res)=>{
@@ -206,6 +224,13 @@ server.get("/adminfeedback",async(req,res)=>{
         feedbacks.push(doc)
     })
     res.render("admindash/adminfeedback", {feedback:feedback})
+})
+//felete feedback
+server.post("/adminfeedback",async (req,res)=>{
+    let id = req.body.id.trim();
+    id = new mongodb.ObjectId(id);
+    await UserfeedSchema.deleteOne({_id :id});
+    res.redirect("admin")
 })
 
 //delete a blog
@@ -375,19 +400,22 @@ server.get("/newupdate",async(req,res)=>{
 server.get("/update/:blogId",async (req,res)=>{
     let params = req.params;
     const id = new mongodb.ObjectId(params.blogId);
-    console.log("Id:",id);
+    // console.log("Id:",id);
     const blogs = await blog.findOne({_id:id})
-    console.log("blogs",blogs);
+    // console.log("blogs",blogs);
     res.render("admindash/update-blog",{blogs});
 })
 server.post("/update",async(req,res)=>{
-    const title = req.body.title.trim();
-    const content = req.body.content.trim()
-    const price = req.body.price.trim()
-    const blogId = new mongodb.ObjectId(req.body.id.trim())
-    const update = {$set: {title,content,price}}
-    await blog.findOneAndUpdate({_id: blogId})
-    res.redirect('admin')
+    const blogtitle = req.body.blogtitle.trim();
+    const blogdescription = req.body.blogdescription.trim()
+    const authorcontact = req.body.authorcontact.trim()
+    const blogId = new mongodb.ObjectId(req.body.id.trim());
+    const update = { $set: {blogtitle,blogdescription,authorcontact}}
+    await blog.findOneAndUpdate({_id: blogId},update).then(()=>{
+        console.log(update)
+        res.redirect('admin')
+    })
+ 
 })
 
 server.get("/deletes",async(req,res)=>{
@@ -399,22 +427,15 @@ server.get("/deletes",async(req,res)=>{
     res.render("admindash/delete", {blog : records})
 })
 server.post("/delete",async (req,res)=>{
-    let id = req.body.id.trim();
+    let  id = req.body.id.trim();
     id = new mongodb.ObjectId(id);
     await blog.deleteOne({_id :id});
     res.redirect("admin")
 })
 
 
-server.get("/alluser",async(req,res)=>{
-    const alluser = await user.find();
-    const allusers= []
-    alluser.forEach((doc)=>{
-        allusers.push(doc)
-        console.log(allusers)
-    })
-    res.render("admindash/alluser", {alluser:alluser})
-})
+
+
 server.get("/payment",(req,res)=>{
     res.render("payment")
 })
@@ -467,11 +488,29 @@ server.get("/cartts",(req,res)=>{
     res.render("carttts")
 })
 
-  
+//paystack
+server.get("/paystack",(req,res)=>{
+    paystack.customer
+  .list()
+  .then(function(body) {
+    console.log(body);
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
 
 
-
-
+  paystack.plan
+  .create({
+    name: "API demo",
+    amount: 10000,
+    interval: "monthly"
+  })
+  .then(function(error, body) {
+    console.log(error);
+    console.log(body);
+  });
+})
 //you are connecting to the data base here
  const db = mongoose.connection;
 
@@ -485,3 +524,60 @@ server.get("/cartts",(req,res)=>{
 db.on("close", ()=>{
     console.log("connection close");
 })
+
+///paystack
+// Paystack Public and Secret keys
+
+const paystackSecretKey = process.env.PAYSTACK; // Replace with your secret key
+
+// Routes
+server.get('/payment', (req, res) => {
+    res.render('payment');
+});
+    
+server.post('/pay', (req, res) => {
+    const { email, amount } = req.body;
+    const paymentDetails = {
+        email,
+        amount: amount * 100, // Amount is in kobo (smallest currency unit in NGN)
+        // callback_url: 'http://localhost:3000/callback',
+        callback_url: 'http://localhost:8000/callback',
+    };
+
+    axios.post('https://api.paystack.co/transaction/initialize', paymentDetails, {
+        headers: {
+            Authorization: `Bearer ${paystackSecretKey}`
+        }
+    })
+    .then(response => {
+        const authUrl = response.data.data.authorization_url;
+        res.redirect(authUrl);
+    })
+    .catch(error => {
+        console.error(error);
+        res.send('An error occurred. Please try again.');
+    });
+});
+
+server.get('/callback', (req, res) => {
+    const { reference } = req.query;
+
+    axios.get(`https://api.paystack.co/transaction/verify/${reference}`, {
+        headers: {
+            Authorization: `Bearer ${paystackSecretKey}`
+        }
+    })
+    .then(response => {
+        const paymentData = response.data.data;
+
+        if (paymentData.status === 'success') {
+            res.render('success', { paymentData });
+        } else {
+            res.send('Payment was unsuccessful.');
+        }
+    })
+    .catch(error => {
+        console.error(error);
+        res.send('An error occurred. Please try again.');
+    });
+});

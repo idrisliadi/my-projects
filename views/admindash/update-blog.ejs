@@ -17,20 +17,21 @@
             <input type="hidden" name="id" value="<%= blogs._id%>">
             <div>
                 <label for="title">title</label>
-                <input type="text" placeholder=" title" value="<%= blogs.blogtitle %>" style=" margin-top: 20px; width: 100%;" name="title">
+                <input type="text" placeholder=" title" value="<%= blogs.blogtitle %>" style=" margin-top: 20px; width: 100%;" name="blogtitle">
             </div> <br>
            
-            <div> <label for="price">price</label>
-                <input type="text" placeholder="Price" value="<%= blogs.authorcontact %>" style=" margin-top: 20px; width: 100%;" name="Price">
+            <div> <label for="price">Number</label>
+                <input type="text" placeholder="Price" value="<%= blogs.authorcontact %>" style=" margin-top: 20px; width: 100%;" name="authorcontact">
             </div> <br>
 
             <div><label for="Description">Description</label>
-                <textarea name="content" placeholder="obj_id" style="width: 100%; height: 70%;" class="text_cont"><%=blogs.blogdescription%></textarea>
+                <textarea name="blogdescription" placeholder="obj_id" style="width: 100%; height: 70%;" class="text_cont"><%=blogs.blogdescription%></textarea>
             </div>
             <div id="controls">
                 <input type="submit" name="update" id="update" value="update" class="submit_btn">
                 <input type="reset" placeholder="" name="reset" id="reset" value="reset" class="reset_btn">
             </div>
+            
         </form>
     </div>
 </body>

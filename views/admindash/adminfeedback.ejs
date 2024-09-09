@@ -86,14 +86,17 @@ h1 {
                 <span class="email"><%= feedback.email%></span>
             </div>
             <p class="message"><%= feedback.message%></p>
+            <form action="/adminfeedback" method="post" style="position: absolute;right: 5%;">
+                <input type="hidden" name="id" value="<%= feedback._id %>">
+                <button  data-id="<%= feedback._id%>">Delete feedback </button>
+              </form>
+               
         </div>  
      
    
     
      <%});%>    
     </section>
-     
-
  
      
 </section>

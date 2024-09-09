@@ -14,4 +14,3 @@ updateBlogbuttons.forEach((el)=>{
         }) 
     })
 })
-

@@ -50,3 +50,11 @@ server.post("/updateuser", async (req,res)=>{
         .expression(`public_id : ${req.file.originalname}`)
         .max_results(1)
         .execute()
+
+
+
+
+        
+# DB_URL = "mongodb://localhost:27017/projecr"
+
+DB_URL = "mongodb+srv://liadiidris22:7G9IcsBV3ThdCKx9@cluster0.n7869da.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/shoppydb"

@@ -162,16 +162,16 @@ feedback.addEventListener("click", function(){
 })
 
 
-const updateprice = document.getElementById("updateprice")
-updateprice.addEventListener("click", function(){
-    $.ajax({
-        method : "GET",
-        url: "/update",
-        success : function(data){
-            console.log($("#forms").html(data))
-        }
-    })
-})
+// const updateprice = document.getElementById("updateprice")
+// updateprice.addEventListener("click", function(){
+//     $.ajax({
+//         method : "GET",
+//         url: "/update",
+//         success : function(data){
+//             console.log($("#forms").html(data))
+//         }
+//     })
+// })
 
 document.getElementById('searchForm').addEventListener('submit', function(event) {
     event.preventDefault(); 

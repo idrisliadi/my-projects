@@ -31,6 +31,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Is Admin</th>
+                <th> Delete Users </th>
             </tr>
     <% alluser.forEach (alluser=>{%>
  
@@ -43,6 +44,10 @@
         <td><%= alluser.name%></td>
         <td><%= alluser.email%></td>
         <td><%= alluser.isAdmin%></td>
+      <td> <form action="/alluser" method="post">
+            <input type="hidden" name="id" value="<%= alluser._id %>">
+            <button style="background-color: white; color: red;width: 100%; border: none;" data-id="<%= alluser._id%>">Confirm  </button>
+          </form></td> 
     </tr>
     </tbody>
      <%});%>  
